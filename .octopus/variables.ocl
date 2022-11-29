@@ -18,3 +18,7 @@ variable "Project.Connection.String" {
 variable "Project.Database.Server.Name" {
     value "(localdb)\\MSSQLLocalDB" {}
 }
+
+variable "Project.Database.Report.Path" {
+    value "C:\\DatabaseReports\\#{Octopus.Environment.Name}" {}
+}
