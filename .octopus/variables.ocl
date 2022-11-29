@@ -7,28 +7,14 @@ variable "Project.Database.Name" {
     }
 }
 
-variable "Project.Database.Server.Name" {
-    value "Trident_Dev" {
-        environment = ["development"]
-    }
-
-    value "Trident_QA" {
-        environment = ["test"]
-    }
-
-    value "Trident_Staging" {
-        environment = ["staging"]
-    }
-
-    value "Trident_Prod" {
-        environment = ["production"]
-    }
+variable "ConnectionStrings:Database" {
+    value "#{Project.Connection.String}" {}
 }
 
 variable "Project.Connection.String" {
-    value "Server=(localdb)\\MSSQLLocalDB;Integrated Security=true;Database=#{Project.Database.Name}" {}
+    value "Server=#{Project.Database.Server.Name};Integrated Security=true;Database=#{Project.Database.Name}" {}
 }
 
-variable "ConnectionStrings:Database" {
-    value "#{Project.Connection.String}" {}
+variable "Project.Database.Server.Name" {
+    value "(localdb)\\MSSQLLocalDB" {}
 }
